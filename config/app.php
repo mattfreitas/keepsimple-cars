@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\FakerServiceProvider;
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -163,6 +164,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        FakerServiceProvider::class,
 
         /*
          * Package Service Providers...
