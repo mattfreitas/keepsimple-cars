@@ -21,7 +21,7 @@ class ModelFactory extends Factory
         return [
             'make_id' => Make::all()->random()->id,
             'vehicle_type_id' => VehicleType::all()->random()->id,
-            'name' => $this->faker->vehicle,
+            'name' => $this->faker->vehicleModel,
             'version' => $this->faker->randomElement(['1.0', '1.6', '2.0']),
         ];
     }
