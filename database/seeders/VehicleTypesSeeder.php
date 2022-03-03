@@ -15,6 +15,10 @@ class VehicleTypesSeeder extends Seeder
      */
     public function run()
     {
-        VehicleType::factory()->count(10)->create();
+        $create = VehicleType::insert([
+            [ 'name' => 'Carro' ],
+            [ 'name' => 'Moto' ],
+            [ 'name' => 'Caminhão' ],
+        ]);
     }
 }

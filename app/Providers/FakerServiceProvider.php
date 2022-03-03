@@ -15,10 +15,11 @@ class FakerServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(Generator::class, function () {
-            $faker = Factory::create();
+            $faker = Factory::create('pt_BR');
             $faker->addProvider(new \Faker\Provider\Fakecar($faker));
             return $faker;
         });
+        
     }
 
     /**
