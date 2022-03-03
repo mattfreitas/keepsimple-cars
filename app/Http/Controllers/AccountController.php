@@ -9,6 +9,8 @@ class AccountController extends Controller
 {
     /**
      * Return the index from account.
+     * 
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
