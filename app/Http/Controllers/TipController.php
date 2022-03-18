@@ -27,27 +27,26 @@ class TipController extends Controller
      */
     public function create()
     {
-        $vehicleTypes = VehicleType::all();
-        $makes = Make::all();
-        return view('tips.create', compact('makes', 'vehicleTypes'));
+        return view('tips.create', [ 
+            'vehicleTypes' => VehicleType::all(),
+            'makes' => Make::all()
+        ]);
     }
 
     /**
      * Store a new tip.
      * 
+     * @param \App\Http\Requests\Tip\TipRequest  $request
+     * @param \App\Models\Tip $tip
+     * 
+     * @return \Illuminate\Http\Response
      */
     public function store(TipRequest $request, Tip $tip)
     {
-        $saveData = $request->only([
-            'title',
-            'description',
-            'model_id',
-            'is_for_all_versions',
-        ]) + [
+        $tip->create($request->validated() + [
             'user_id' => auth()->user()->id,
-        ];
+        ]);
 
-        $tip->create($saveData);
         return redirect()->route('tips.create')->withMessage('Dica criada com sucesso! Você acaba de tornar a experiência de compra de carro melhor.');
     }
 
@@ -59,9 +58,11 @@ class TipController extends Controller
      */
     public function edit(Tip $tip)
     {
-        $makes = Make::all();
-        $vehicleTypes = VehicleType::all();
-        return view('tips.edit', compact('tip', 'makes', 'vehicleTypes'));
+        return view('tips.edit', [
+            'tip' => $tip,
+            'makes' => Make::all(),
+            'vehicleTypes' => VehicleType::all()
+        ]);
     }
 
     /**
@@ -69,19 +70,15 @@ class TipController extends Controller
      * 
      * @param Tip $tip
      * @param CreateTipRequest $request
+     * 
+     * @return \Illuminate\Http\Response
      */
     public function update(TipRequest $request, Tip $tip)
     {
-        $saveData = $request->only([
-            'title',
-            'description',
-            'model_id',
-            'is_for_all_versions',
-        ]) + [
+        $tip->update($request->validated() + [
             'user_id' => auth()->user()->id,
-        ];
+        ]);
 
-        $tip->update($saveData);
         return redirect()->route('tips.edit', $tip->id)->withMessage('Dica atualizada com sucesso!');
     }
 

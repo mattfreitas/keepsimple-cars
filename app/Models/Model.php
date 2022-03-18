@@ -49,6 +49,7 @@ class Model extends BaseModel
     /**
      * Get all version by model ID.
      * 
+     * @param int  $model_id
      * @return Array
      */
     public function getAllVersionByModelId($model_id)
@@ -59,6 +60,8 @@ class Model extends BaseModel
 
     /**
      * Get versions of the model.
+     * 
+     * @param int|false $model_id
      * 
      * @return Eloquent\Collection
      */
