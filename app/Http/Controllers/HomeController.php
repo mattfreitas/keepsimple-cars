@@ -15,7 +15,9 @@ class HomeController extends Controller
     /**
      * Handle the incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request
+     * @param \App\Models\Model $model
+     * 
      * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request, Model $model)
