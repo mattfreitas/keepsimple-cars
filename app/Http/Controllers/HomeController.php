@@ -22,15 +22,14 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request, Model $model)
     {
-        $tips = TipRepository::getTipWithAdditionalData(
-            $request->get('make', null),
-            $request->get('vehicle_type', null),
-            $request->get('model', null)
-        )->paginate(10);
-        
-
-        $makes = Make::all();
-        $vehicleTypes = VehicleType::all();
-        return view('home', compact('tips', 'makes', 'vehicleTypes'));
+        return view('home', [
+            'makes' => Make::all(),
+            'vehicleTypes' => VehicleType::all(),
+            'tips' => TipRepository::getTipWithAdditionalData(
+                make: $request->get('make', null),
+                vehicle_type: $request->get('vehicle_type', null),
+                model: $request->get('model', null),
+            )->paginate(10)
+        ]);
     }
 }
