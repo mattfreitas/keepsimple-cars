@@ -14,7 +14,10 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $tips = TipRepository::getTipWithAdditionalData(null, null, null, auth()->id())->get();
-        return view('account.index', compact('tips'));
+        return view('account.index', [
+            'tips' => TipRepository::getTipWithAdditionalData(
+                user_id: auth()->id()
+            )->get()
+        ]);
     }
 }
