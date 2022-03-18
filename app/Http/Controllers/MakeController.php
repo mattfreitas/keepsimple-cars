@@ -12,6 +12,8 @@ class MakeController extends Controller
      * Returns a list of models by make id.
      * 
      * @param  \Illuminate\Http\Request  $request
+     * @param \App\Models\Make $make
+     * 
      * @return \Illuminate\Http\Response
      */
     public function getModelsFromMake(Request $request, Make $make)
