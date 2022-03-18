@@ -17,4 +17,4 @@ This command will:
  
 By the way, the password is "contratado!".
 
-**Note:** the minimum PHP version to run this project is **8** since there's named arguments in the project. This project was tested is **8.1.2**.
+**Note:** the minimum PHP version to run  is **8** since there's named arguments. This project was tested is **8.1.2**.
